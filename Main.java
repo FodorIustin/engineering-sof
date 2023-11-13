@@ -1,15 +1,18 @@
 public class Main {
     public static void main(String[] args) {
-        DataSource source = new FileDataSource();
-        source = new EncryptDecorator(source);
-        source = new CompressDecorator(source);
+        // Example usage
+        GameBoard gameBoard = new GameBoard(50, 50, SceneType.EUROPEAN, 5);
 
-        String content = "Hello, this is a test string for encryption and compression.";
-        String file = "data.txt";
+        // Create a character
+        Character humanCharacter = new Character(new Position(0, 0), new Size(3, 3), "Human");
 
-        source.write(file, content);
-        String readContent = source.read(file);
-        System.out.println("Read content: " + readContent);
+        // Add character to the game board
+        gameBoard.addCharacter(humanCharacter);
+
+        // Move the character to a new position
+        humanCharacter.moveTo(new Position(10, 10));
+
+        // Render the game board to check positions
+        gameBoard.render();
     }
 }
-
